@@ -1,6 +1,7 @@
-# darma-bangsa-app
-Aulia Rahman Zulfi
-Fadhillah Azhar Alsani
-Sayyid Muhammad Umar Al Haris
-M Daffa Massimiliano A
-Auriga Farhan R
+# DARMA BANGSA NEWS
+
+1. Aulia Rahman Zulfi
+2. Fadhillah Azhar Alsani
+3. Sayyid Muhammad Umar Al Haris
+4. M Daffa Massimiliano A
+5. Auriga Farhan R
