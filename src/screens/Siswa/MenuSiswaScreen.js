@@ -52,6 +52,13 @@ function MenuSiswaScreen({ route , navigation}) {
         >
           <Text>SignOUT</Text>
         </Button>
+
+        <Button
+            title="konseling"
+            onPress={() => navigation.navigate('DashboardKonseling', {userData})}
+        >
+
+        </Button>
     </View>
   )
 }
