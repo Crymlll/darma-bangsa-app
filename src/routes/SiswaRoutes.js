@@ -9,9 +9,9 @@ const Stack = createNativeStackNavigator();
 function SiswaRoutes() {
   
   return (
-  <Stack.Navigator initialRouteName='MenuSiswaScreen' screenOptions={{headerShown: false}}>
-    <Stack.Screen name="MenuSiswaScreen" component={MenuSiswaScreen} />
-  </Stack.Navigator>
+    <Stack.Navigator initialRouteName='MenuSiswaScreen' screenOptions={{headerShown: false}}>
+      <Stack.Screen name="MenuSiswaScreen" component={MenuSiswaScreen} />
+    </Stack.Navigator>
   )
 }
 

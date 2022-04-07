@@ -9,30 +9,31 @@ import { AuthContext } from '../../db/AuthProvider';
 
 function LoginSiswaScreen({navigation}) {
 
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     const login = async (email, password) => {
         try {
           await auth().signInWithEmailAndPassword(email, password);
-          navigation.navigate('Siswa');
+          navigation.navigate('Siswa', { 
+            screen: 'MenuSiswaScreen',
+            params: { email:email },
+        });
         } catch (e) {
           console.log(e);
-    
         }
       }
 
-    // const {login} = useContext(AuthContext);
-
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
 
     let AddData = () => {
         firestore()
         .collection('users')
         .add({
-            email: 'tes@gmail.com',
+            email: 'admin@gmail.com',
             kelas: 30,
             nama: 'Ada Lovelace',
-            no_induk: '123456789',
-            role: 'Siswa',
+            no_induk: '3245354355',
+            role: 'ADMIN',
         })
         .then(() => {
             console.log('User added!');
