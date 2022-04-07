@@ -2,13 +2,52 @@ import {StyleSheet } from 'react-native';
 
 
 const loginStyle = StyleSheet.create({
+    
+    container:{
+        flex: 1,
+        alignItems: 'center',
+    },
+
+    title:{
+        textAlign: 'center',
+        color: 'black',
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginTop: '10%',
+    },
+
+    background:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        width: '100%',
+    },
+    
+    header:{
+        textAlign: 'center',
+        color: 'black',
+        fontSize: 15,
+        marginTop: '5%',
+    },
+
+    login:{
+        marginTop: '5%',
+        marginBottom: '5%',
+    },
+
+    logo:{
+        marginTop: '10%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
     box:{
         alignSelf: 'center',
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         padding: '10%',
         width: '100%',
-        shadowColor: '#000',
-        elevation: 5,
+        // shadowColor: '#000',
+        // elevation: 5,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
     },
@@ -46,7 +85,68 @@ const loginStyle = StyleSheet.create({
         borderRadius: 5,
         color: '#041562',
         borderWidth: 1,
+        borderColor: '#041562',
+    },
+})
+
+const sloginStyle = StyleSheet.create({
+    box:{
+        alignSelf: 'center',
+        backgroundColor: '#fff',
+        padding: '10%',
+        width: '100%',
+        height: '60%',
+        marginTop: '70%',
+        shadowColor: '#000',
+        elevation: 5,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+    },
+
+    background:{
+        top: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        width: '100%',
+    },
+
+    input: {
+        width: '100%',
+        borderColor: '#c4c4c4',
+        borderWidth: 1,
+        marginBottom: '10%',
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: '#fff',
+        lineHeight: 1,
+    },
+    ButtonSubmit:{
+        fontWeight: '400',
+        fontSize: 20,
+        paddingTop: 5,
+        color: '#fff',
+        backgroundColor: '#041562',
+        borderRadius: 5,
+        textAlign: 'center',
+        width: '100%',
+        height: 40,
+    },
+    ButtonSubmitWhite:{
+        marginTop: '5%',
+        fontWeight: '400',
+        fontSize: 20,
+        paddingTop: 5,
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        textAlign: 'center',
+        width: '100%',
+        height: 40,
+        borderRadius: 5,
+        color: '#041562',
+        borderWidth: 1,
     },
 })
 
 export default loginStyle;
+export {sloginStyle};
