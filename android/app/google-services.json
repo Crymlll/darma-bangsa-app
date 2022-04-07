@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1051057724673",
+    "firebase_url": "https://darma-bangsa-news-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "darma-bangsa-news",
+    "storage_bucket": "darma-bangsa-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051057724673:android:08816ffa59e5360f520f00",
+        "android_client_info": {
+          "package_name": "com.darmabangsanews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051057724673-f060v88vhmt69opal932dhunb020eqg7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darmabangsanews",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1051057724673-2e4m1lrpaf8na7710qpein1isb58gv6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuF80tRqbq0LenKrB_DBEFgo2jDu2_PoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051057724673-2e4m1lrpaf8na7710qpein1isb58gv6r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
