@@ -19,7 +19,7 @@ const loginStyle = StyleSheet.create({
         color: 'black',
         fontSize: 25,
         fontWeight: 'bold',
-        // marginTop: '20%',
+        marginTop: '10%',
     },
 
     background:{
@@ -42,7 +42,7 @@ const loginStyle = StyleSheet.create({
     },
 
     logo:{
-        marginTop: '20%',
+        marginTop: '10%',
         alignItems: 'center',
         justifyContent: 'center',
     },
