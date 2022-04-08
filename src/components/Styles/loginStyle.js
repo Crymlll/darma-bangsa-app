@@ -6,6 +6,12 @@ const loginStyle = StyleSheet.create({
     container:{
         flex: 1,
         alignItems: 'center',
+        height: '100%',
+    },
+    box2:{
+        top: 0,
+        alignItems: 'center',
+        height: '70%',
     },
 
     title:{
@@ -13,7 +19,7 @@ const loginStyle = StyleSheet.create({
         color: 'black',
         fontSize: 25,
         fontWeight: 'bold',
-        marginTop: '20%',
+        // marginTop: '20%',
     },
 
     background:{
@@ -32,7 +38,6 @@ const loginStyle = StyleSheet.create({
     },
 
     login:{
-        marginTop: '20%',
         marginBottom: '5%',
     },
 
@@ -43,6 +48,7 @@ const loginStyle = StyleSheet.create({
     },
 
     box:{
+        height: '30%',
         alignSelf: 'center',
         // backgroundColor: '#fff',
         padding: '10%',
@@ -51,6 +57,7 @@ const loginStyle = StyleSheet.create({
         // elevation: 5,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
+        top: 0,
     },
     input: {
         width: '100%',
