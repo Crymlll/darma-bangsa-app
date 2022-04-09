@@ -86,13 +86,35 @@ const menuStyle = StyleSheet.create({
     dispensasiTextArea:{
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
-
-
-
-    
-
+    textDispensasi:{
+        fontSize: 15,
+        marginLeft: '2%',
+    },
+    bottomBox:{
+        width: '95%',
+        justifyContent: 'space-between',
+        marginTop: '30%',
+    },
+    infoEvent:{
+        width: '100%',
+        height: '20%',
+    },
+    textJudul:{
+        fontSize: 20,
+        fontWeight: '400',
+        color: 'black',
+    },
+    listEvent:{
+        width: '100%',
+        height: '80%',
+    },
+    konselingIcon:{
+        width: 150,
+        height: 150,
+        borderRadius: 75,
+    },
 })
 
 export default menuStyle;

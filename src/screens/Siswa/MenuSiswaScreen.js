@@ -11,6 +11,9 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import menuStyle from '../../components/Styles/menuStyle';
 
 
+import KonselingIcon from '../../components/Konseling/KonselingIcon';
+
+
 function MenuSiswaScreen({ route , navigation}) {
   // const {user, logout} = useContext(AuthContext)
   // const user = auth.currentUser;
@@ -86,7 +89,7 @@ function MenuSiswaScreen({ route , navigation}) {
             <Text style={menuStyle.dispensasiText}>Dispensasi Hari Ini</Text>
             <View style={menuStyle.dispensasiTextArea}>
               <Octicons name="dot-fill" size={20} color="red" />
-              <Text style={menuStyle.text}>Tidak Dispensasi</Text>
+              <Text style={menuStyle.textDispensasi}>Tidak Dispensasi</Text>
             </View>
             
           </View>          
@@ -94,10 +97,22 @@ function MenuSiswaScreen({ route , navigation}) {
       </View>
       <View style={menuStyle.bottomBox}> 
         <View style={menuStyle.infoEvent}>
-          
+          <Text style={menuStyle.textJudul}>Info Penting Hari Ini</Text>
+          <View style={menuStyle.listEvent}>
+
+          </View>
         </View>
         <View style={menuStyle.informasi}>
+          <Text style={menuStyle.textJudul}>Informasi Lengkap</Text>
+          <View style={menuStyle.listInformasi}>
+            <Pressable
+              onPress={() => navigation.navigate('Konseling')}
+              style={menuStyle.konselingIcon}
+            >
+              <KonselingIcon/>
+            </Pressable>
 
+          </View>
         </View>
       </View>
     </View>
