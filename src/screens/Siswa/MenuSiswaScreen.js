@@ -106,7 +106,7 @@ function MenuSiswaScreen({ route , navigation}) {
           <Text style={menuStyle.textJudul}>Informasi Lengkap</Text>
           <View style={menuStyle.listInformasi}>
             <Pressable
-              onPress={() => navigation.navigate('Konseling')}
+              onPress={() => navigation.navigate('KonselingMenuScreen')}
               style={menuStyle.konselingIcon}
             >
               <KonselingIcon/>
