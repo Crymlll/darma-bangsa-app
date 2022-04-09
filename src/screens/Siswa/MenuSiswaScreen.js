@@ -12,6 +12,9 @@ import menuStyle from '../../components/Styles/menuStyle';
 
 
 import KonselingIcon from '../../components/Konseling/KonselingIcon';
+import JadwalKonselingIcon from '../../components/Konseling/JadwalKonselingIcon';
+import BeritaIcon from '../../components/Berita/BeritaIcon';
+import PerizinanIcon from '../../components/Perizinan/PerizinanIcon';
 
 
 function MenuSiswaScreen({ route , navigation}) {
@@ -105,13 +108,34 @@ function MenuSiswaScreen({ route , navigation}) {
         <View style={menuStyle.informasi}>
           <Text style={menuStyle.textJudul}>Informasi Lengkap</Text>
           <View style={menuStyle.listInformasi}>
-            <Pressable
-              onPress={() => navigation.navigate('KonselingMenuScreen')}
-              style={menuStyle.konselingIcon}
-            >
-              <KonselingIcon/>
-            </Pressable>
-
+            <View style={menuStyle.boxInformasi}>
+              <Pressable
+                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                style={menuStyle.konselingIcon}
+              >
+                <KonselingIcon/>
+              </Pressable>
+              <Pressable
+                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                style={menuStyle.konselingIcon}
+              >
+                <JadwalKonselingIcon/>
+              </Pressable>
+              <Pressable
+                onPress={() => navigation.navigate('DashboardBerita')}
+                style={menuStyle.konselingIcon}
+              >
+                <BeritaIcon/>
+              </Pressable>
+            </View>
+            <View style={menuStyle.boxInformasi}>
+              <Pressable
+                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                style={menuStyle.konselingIcon}
+              >
+                <PerizinanIcon/>
+              </Pressable>
+            </View>
           </View>
         </View>
       </View>

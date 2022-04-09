@@ -55,8 +55,8 @@ const menuStyle = StyleSheet.create({
         justifyContent: 'space-between',
     },
     profilePhotoFrame:{
-        width: 100,
-        height: 100,
+        width: '30%',
+        height: '80%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -111,10 +111,18 @@ const menuStyle = StyleSheet.create({
         height: '80%',
     },
     konselingIcon:{
-        width: 150,
-        height: 150,
+        width: '30%',
+        height: '100%',
         borderRadius: 75,
     },
+    boxInformasi:{
+        width: '100%',
+        height: '33%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '5%',
+    }
 })
 
 export default menuStyle;

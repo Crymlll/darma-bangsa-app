@@ -25,7 +25,26 @@ const konselingIconStyle = StyleSheet.create({
         color: 'black',
         marginTop: 10,
     },
-
 })
 
-export { konselingIconStyle ,konselingStyle};
+const jadwalKonselingStyle = StyleSheet.create({
+    box:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#CDF2CA',
+        borderRadius: 15,
+    },
+    Icon:{
+        fontSize: 48,
+        color: 'black',
+    },
+    text:{
+        fontSize: 18,
+        color: 'black',
+        marginTop: 10,
+        textAlign: 'center',
+    },
+})
+
+export { jadwalKonselingStyle, konselingIconStyle ,konselingStyle};

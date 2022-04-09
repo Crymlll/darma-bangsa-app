@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Button, StyleSheet, Modal, Pressable, Image} from 'react-native';
 
-function BeritaMenuScreen() {
+function BeritaDetail() {
   return (
     <View>
         <Text>Berita Menu Screen</Text>
@@ -9,4 +9,4 @@ function BeritaMenuScreen() {
   )
 }
 
-export default BeritaMenuScreen
+export default BeritaDetail
