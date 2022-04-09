@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const menuStyle = StyleSheet.create({
+const menu2Style = StyleSheet.create({
     container:{
         flex: 1,
         alignItems: 'center',
@@ -99,7 +99,7 @@ const menuStyle = StyleSheet.create({
     },
     infoEvent:{
         width: '100%',
-        height: '20%',
+        height: '25%',
     },
     textJudul:{
         fontSize: 20,
@@ -117,7 +117,7 @@ const menuStyle = StyleSheet.create({
     },
     boxInformasi:{
         width: '100%',
-        height: '33%',
+        height: '55%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -153,4 +153,4 @@ const menuStyle = StyleSheet.create({
 
 })
 
-export default menuStyle;
+export default menu2Style;

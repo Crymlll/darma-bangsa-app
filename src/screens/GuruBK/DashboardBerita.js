@@ -86,34 +86,3 @@ useEffect(() => {
 }
 
 export default DashboardBerita
-
-
-// let fecthBerita =() => {
-//   database()
-//   .ref('berita')
-//   .limitToLast(3)
-//   .on('value', (snapshot) => {
-//     let berita = snapshot.val();
-//     berita= berita.reverse()
-//     // console.log(berita)
-//     for(let i=0;i<3;i++){
-//       arrBerita.push(berita[i])
-//     }
-//   })
-
-//   setTimeout(() => {
-//     console.log(arrBerita)
-//     if(arrBerita.length > 0){
-//       return arrBerita.map((item, index) => {
-//         return (
-//           <View style={beritaStyle.beritaBox} key={index}>
-//               <Text style={beritaStyle.beritaJudul}>{item.judul}</Text>
-//               <Text style={beritaStyle.beritaKonten}>{item.konten}</Text>
-//           </View>
-//         )
-//       })
-//     }
-//   }, 100)
-
-
-// }

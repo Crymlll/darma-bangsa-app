@@ -10,8 +10,8 @@ import PushNotification from "react-native-push-notification";
 import LoginRoutes from './src/routes/LoginRoutes';
 import SiswaRoutes from './src/routes/SiswaRoutes';
 import WaliKelasRoutes from './src/routes/WaliKelasRoutes';
+import GuruRoutes from './src/routes/GuruRoutes';
 import GuruBKRoutes from './src/routes/GuruBKRoutes';
-import GuruKonselingRoutes from './src/routes/GuruKonselingRoutes';
 
 import Firebase from '@react-native-firebase/app'
 
@@ -93,9 +93,9 @@ class App extends Component {
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={LoginRoutes}  />
           <Stack.Screen name="Siswa" component={SiswaRoutes} />
+          <Stack.Screen name="Guru" component={GuruRoutes} />
           <Stack.Screen name="WaliKelas" component={WaliKelasRoutes} />
           <Stack.Screen name="GuruBK" component={GuruBKRoutes} />
-          <Stack.Screen name="GuruKonseling" component={GuruKonselingRoutes} />
         </Stack.Navigator>
       </NavigationContainer>
     );

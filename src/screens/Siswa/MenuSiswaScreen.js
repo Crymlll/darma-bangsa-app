@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { View, Text, StyleSheet, Modal, Pressable, Image, Button} from 'react-native';
+import { View, Text, StyleSheet, Modal, Pressable, Image, Button, TouchableOpacity} from 'react-native';
 // import { AuthContext } from '../../db/AuthProvider';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -7,6 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import menuStyle from '../../components/Styles/menuStyle';
 
@@ -24,6 +25,7 @@ function MenuSiswaScreen({ route , navigation}) {
   const data = route.params;
 
   const [userData, setUserData] = useState([]);
+  let [arrBerita, setArrBerita] = useState([]);
 
   let logout = async () => {
     try {
@@ -51,8 +53,51 @@ function MenuSiswaScreen({ route , navigation}) {
     }
   }
 
+  let fetchBerita = async () => {
+    try {
+      await firestore()
+      .collection('berita')
+      // Filter results
+      .orderBy('urutan', 'desc')
+      .limit(1)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          setArrBerita(arrBerita => [...arrBerita, doc.data()]);
+        });
+      });
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+  let tampilkanBerita = () => {
+    if(arrBerita.length > 0){
+        return arrBerita.map((item, index) => {
+          return (
+            <TouchableOpacity 
+              style={menuStyle.beritaBox} 
+              onPress={() => navigation.navigate('BeritaDetail', {
+                id: item.id,
+                judul: item.judul,
+                konten: item.konten,
+              })}
+              key={index}
+            >
+              <View style={menuStyle.textBerita}>
+                <Text style={menuStyle.beritaJudul}>{item.judul}</Text>
+                <Text style={menuStyle.beritaKonten}>{item.konten.substring(0,40)}</Text>
+              </View>
+            </TouchableOpacity>
+          )
+        })
+      }
+  }
+
   useEffect(() => {
     fetchData();
+    fetchBerita();
+    setArrBerita([]);
 }, [])
   
   return (
@@ -77,7 +122,7 @@ function MenuSiswaScreen({ route , navigation}) {
                 <Text style={menuStyle.text}>NISN : {userData.no_induk}</Text>
               </View>
             </View>   
-            <Pressable
+            <TouchableOpacity
             onPress={() => logout()}
             >
               <SimpleLineIcons 
@@ -86,7 +131,7 @@ function MenuSiswaScreen({ route , navigation}) {
                 color="black" 
                 style={menuStyle.logout}
               />
-            </Pressable>
+            </TouchableOpacity>
           </View>
           <View style={menuStyle.dispensasiArea}>
             <Text style={menuStyle.dispensasiText}>Dispensasi Hari Ini</Text>
@@ -94,7 +139,6 @@ function MenuSiswaScreen({ route , navigation}) {
               <Octicons name="dot-fill" size={20} color="red" />
               <Text style={menuStyle.textDispensasi}>Tidak Dispensasi</Text>
             </View>
-            
           </View>          
         </View>
       </View>
@@ -102,39 +146,39 @@ function MenuSiswaScreen({ route , navigation}) {
         <View style={menuStyle.infoEvent}>
           <Text style={menuStyle.textJudul}>Info Penting Hari Ini</Text>
           <View style={menuStyle.listEvent}>
-
+            {tampilkanBerita()}
           </View>
         </View>
         <View style={menuStyle.informasi}>
           <Text style={menuStyle.textJudul}>Informasi Lengkap</Text>
           <View style={menuStyle.listInformasi}>
             <View style={menuStyle.boxInformasi}>
-              <Pressable
+              <TouchableOpacity
                 onPress={() => navigation.navigate('KonselingMenuScreen')}
                 style={menuStyle.konselingIcon}
               >
                 <KonselingIcon/>
-              </Pressable>
-              <Pressable
+              </TouchableOpacity>
+              <TouchableOpacity
                 onPress={() => navigation.navigate('KonselingMenuScreen')}
                 style={menuStyle.konselingIcon}
               >
                 <JadwalKonselingIcon/>
-              </Pressable>
-              <Pressable
+              </TouchableOpacity>
+              <TouchableOpacity
                 onPress={() => navigation.navigate('DashboardBerita')}
                 style={menuStyle.konselingIcon}
               >
                 <BeritaIcon/>
-              </Pressable>
+              </TouchableOpacity>
             </View>
             <View style={menuStyle.boxInformasi}>
-              <Pressable
+              <TouchableOpacity
                 onPress={() => navigation.navigate('KonselingMenuScreen')}
                 style={menuStyle.konselingIcon}
               >
                 <PerizinanIcon/>
-              </Pressable>
+              </TouchableOpacity>
             </View>
           </View>
         </View>

@@ -38,7 +38,7 @@ const beritaStyle = StyleSheet.create({
     },
     beritaBox:{
         width: '100%',
-        height: '22%',
+        height: '20%',
         padding: '5%',
         backgroundColor: 'white',
         borderRadius: 10,
@@ -70,7 +70,7 @@ const beritaStyle = StyleSheet.create({
         fontSize: 15,
         color: '#11468F',
         textDecorationLine: 'underline',
-    }
+    },
 
 })
 
@@ -94,4 +94,58 @@ const beritaIconStyle = StyleSheet.create({
     },
 })
 
-export { beritaStyle, beritaIconStyle };
+const beritaDetailStyle = StyleSheet.create({
+    container:{
+        flex: 1,
+        alignItems: 'center',
+    },
+    blueBox:{
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        width: '100%',
+        height: '10%',
+        backgroundColor: '#11468F',
+        paddingRight: '5%',
+        paddingLeft: '3%',
+    },
+    iconBox:{
+        backgroundColor: 'white',
+        width: '10%',
+        height: '50%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+    },
+    Icon:{
+        fontSize: 50,
+        color: 'black',
+    },
+    judul:{
+        fontSize: 20,
+        color: 'white',
+        marginLeft: '5%',
+    },
+    box:{
+        marginTop: '5%',
+        width: '90%',
+    },
+    gambar:{
+        width: '100%',
+        height: '30%',
+    },
+    judulBerita:{
+        marginTop: '10%',
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'black',
+    },
+    kontenBerita:{
+        marginTop: '5%',
+        fontSize: 15,
+        color: 'black',
+    },
+
+})
+
+export { beritaDetailStyle, beritaStyle, beritaIconStyle };
