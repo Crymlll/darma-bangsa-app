@@ -99,7 +99,7 @@ const menu2Style = StyleSheet.create({
     },
     infoEvent:{
         width: '100%',
-        height: '25%',
+        height: '30%',
     },
     textJudul:{
         fontSize: 20,
@@ -120,6 +120,7 @@ const menu2Style = StyleSheet.create({
         height: '55%',
         flexDirection: 'row',
         justifyContent: 'space-between',
+
         alignItems: 'center',
         marginTop: '5%',
     },

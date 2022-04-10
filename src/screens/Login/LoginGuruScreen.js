@@ -10,8 +10,8 @@ import { AuthContext } from '../../db/AuthProvider';
 
 function LoginGuruScreen({ navigation }) {
 
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const [userData, setUserData] = useState([]);
 
@@ -24,74 +24,17 @@ function LoginGuruScreen({ navigation }) {
   // const password = 'auliarahmanz'
 
   //wali kelas
-  const email = 'auliarahmanz@gmail.com'
-  const password = 'auliarahmanz'
+  // const email = 'auliarahmanz@gmail.com'
+  // const password = 'auliarahmanz'
 
   const login = async (email, password) => {
-      try {
-        try {
-          await firestore()
-          .collection('users')
-          // Filter results
-          .where('email', '==', email)
-          .get()
-          .then(querySnapshot => {
-            console.log(querySnapshot.docs[0].data())
-            auth().signInWithEmailAndPassword(email, password);
-            if(querySnapshot.docs[0].data().role == 'guru'){
-              navigation.navigate('Guru', { 
-                screen: 'MenuGuruScreen',
-                params: { 
-                  email: querySnapshot.docs[0].data().email,
-                  nama: querySnapshot.docs[0].data().nama,
-                  no_induk: querySnapshot.docs[0].data().no_induk,
-                  kelas: querySnapshot.docs[0].data().kelas,
-                  role: querySnapshot.docs[0].data().role,
-                  bidang: querySnapshot.docs[0].data().bidang,
-                  },
-              });
-            }
-            else if(querySnapshot.docs[0].data().role == 'guru konseling'){
-              navigation.navigate('GuruBK', { 
-                screen: 'MenuGuruBKScreen',
-                params: { 
-                  email: querySnapshot.docs[0].data().email,
-                  nama: querySnapshot.docs[0].data().nama,
-                  no_induk: querySnapshot.docs[0].data().no_induk,
-                  kelas: querySnapshot.docs[0].data().kelas,
-                  role: querySnapshot.docs[0].data().role,
-                  bidang: querySnapshot.docs[0].data().bidang,
-                  },
-              });
-            }
-            else if(querySnapshot.docs[0].data().role == 'wali kelas'){
-              navigation.navigate('WaliKelas', { 
-                screen: 'MenuWaliKelasScreen',
-                params: { 
-                  email: querySnapshot.docs[0].data().email,
-                  nama: querySnapshot.docs[0].data().nama,
-                  no_induk: querySnapshot.docs[0].data().no_induk,
-                  kelas: querySnapshot.docs[0].data().kelas,
-                  role: querySnapshot.docs[0].data().role,
-                  bidang: querySnapshot.docs[0].data().bidang,
-                  },
-              });
-            }
-          });
-        }catch(e){
-          console.log(e);
-        }
-        
-
-        
-        
-        
-      } catch (e) {
-        console.log(e);
-      }
+    try {
+      await auth().signInWithEmailAndPassword(email, password);
+    } catch (e) {
+      console.log(e);
     }
+  }
 
-  
   return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Image source={require('../../images/Background.png')} resizeMode="cover" style={sloginStyle.background}></Image>

@@ -17,40 +17,42 @@ import JadwalKonselingIcon from '../../components/Konseling/JadwalKonselingIcon'
 import BeritaIcon from '../../components/Berita/BeritaIcon';
 import PerizinanIcon from '../../components/Perizinan/PerizinanIcon';
 
+import { firebase } from '@react-native-firebase/app';
+
 
 function MenuSiswaScreen({ route , navigation}) {
-  // const {user, logout} = useContext(AuthContext)
-  // const user = auth.currentUser;
-
-  const data = route.params;
 
   const [userData, setUserData] = useState([]);
   let [arrBerita, setArrBerita] = useState([]);
+  let [email, setEmail] = useState('');
 
   let logout = async () => {
     try {
       await auth().signOut();
-      navigation.navigate('Login');
     } catch (e) {
       console.log(e);
     }
   }
 
   let fetchData = async () => {
-    try {
-      await firestore()
-      .collection('users')
-      // Filter results
-      .where('email', '==', data.email)
-      .get()
-      .then(querySnapshot => {
-        // console.log(data.email)
-        setUserData(querySnapshot.docs[0].data());
-        // console.log(userData)
-      });
-    }catch(e){
-      console.log(e);
-    }
+
+    await firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        try {
+          firestore()
+          .collection('users')
+          // Filter results
+          .where('email', '==', user.email)
+          .get()
+          .then(querySnapshot => {
+            setEmail(user.email);
+            setUserData(querySnapshot.docs[0].data());
+          });
+        }catch(e){
+          console.log(e);
+        }
+      }
+    });
   }
 
   let fetchBerita = async () => {
@@ -154,13 +156,13 @@ function MenuSiswaScreen({ route , navigation}) {
           <View style={menuStyle.listInformasi}>
             <View style={menuStyle.boxInformasi}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                onPress={() => navigation.navigate('DashboardKonseling')}
                 style={menuStyle.konselingIcon}
               >
                 <KonselingIcon/>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                onPress={() => navigation.navigate('BuatJadwalKonseling',{ email: email })}
                 style={menuStyle.konselingIcon}
               >
                 <JadwalKonselingIcon/>

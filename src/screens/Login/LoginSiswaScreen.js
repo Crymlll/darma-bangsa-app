@@ -9,19 +9,16 @@ import { AuthContext } from '../../db/AuthProvider';
 
 function LoginSiswaScreen({navigation}) {
 
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const email = 'aulia@gmail.com'
-    const password = 'auliarahmanz'
+    ///siswa
+    // const email = 'aulia@gmail.com'
+    // const password = 'auliarahmanz'
 
     const login = async (email, password) => {
         try {
           await auth().signInWithEmailAndPassword(email, password);
-          navigation.navigate('Siswa', { 
-            screen: 'MenuSiswaScreen',
-            params: { email:email },
-        });
         } catch (e) {
           console.log(e);
         }

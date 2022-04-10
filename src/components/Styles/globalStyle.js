@@ -15,5 +15,44 @@ const globalStyle = StyleSheet.create({
     },
 })
 
+const globalScreenStyle = StyleSheet.create({
+    background:{
+        height: '100%',
+        top: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        width: '100%',
+    },
+    title:{
+        textAlign: 'center',
+        color: 'black',
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginTop: '20%',
+    },
+    header:{
+        textAlign: 'center',
+        color: 'black',
+        fontSize: 15,
+    },
+    logo:{
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    iconBox:{
+        marginTop: '10%',
+        backgroundColor: '#041562',
+        width: '50%',
+        height: '5%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        textAlign: 'center',
+        color: '#fff',
+    },
+    
+})
 
-export { globalStyle };
+
+export { globalStyle, globalScreenStyle };

@@ -1,39 +1,15 @@
 // In App.js in a new project
 
 import React, { Component } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import PushNotification from "react-native-push-notification";
 
-import LoginRoutes from './src/routes/LoginRoutes';
-import SiswaRoutes from './src/routes/SiswaRoutes';
-import WaliKelasRoutes from './src/routes/WaliKelasRoutes';
-import GuruRoutes from './src/routes/GuruRoutes';
-import GuruBKRoutes from './src/routes/GuruBKRoutes';
+import Index from './src/routes/Index';
 
-import Firebase from '@react-native-firebase/app'
-
-const Stack = createNativeStackNavigator();
-
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator screenOptions={{headerShown: false}}>
-//         <Stack.Screen name="Login" component={LoginRoutes}  />
-//         <Stack.Screen name="Siswa" component={SiswaRoutes} />
-//         <Stack.Screen name="WaliKelas" component={WaliKelasRoutes} />
-//         <Stack.Screen name="GuruBK" component={GuruBKRoutes} />
-//         <Stack.Screen name="GuruKonseling" component={GuruKonselingRoutes} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
 
 class App extends Component {
   componentDidMount(){
-    // Firebase.initializeApp(this);
 
     PushNotification.configure({
       // (optional) Called when Token is generated (iOS and Android)
@@ -89,15 +65,7 @@ class App extends Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Login" component={LoginRoutes}  />
-          <Stack.Screen name="Siswa" component={SiswaRoutes} />
-          <Stack.Screen name="Guru" component={GuruRoutes} />
-          <Stack.Screen name="WaliKelas" component={WaliKelasRoutes} />
-          <Stack.Screen name="GuruBK" component={GuruBKRoutes} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Index/>
     );
   }
 
