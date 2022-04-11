@@ -163,6 +163,13 @@ const konselingMenuStyle = StyleSheet.create({
         color: '#000',
         marginLeft: '5%',
     },
+    btn:{
+        textAlign: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    }
+    
 })
 
 export { konselingMenuStyle, jadwalKonselingStyle, konselingIconStyle ,konselingStyle};

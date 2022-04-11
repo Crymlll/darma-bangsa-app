@@ -129,13 +129,13 @@ function MenuGuruBKScreen({ route , navigation}) {
           <View style={menu2Style.listInformasi}>
             <View style={menu2Style.boxInformasi}>
             <TouchableOpacity
-                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                onPress={() => navigation.navigate('DashboardKonseling', {user: data})}
                 style={menu2Style.konselingIcon}
               >
                 <KonselingIcon/>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                onPress={() => navigation.navigate('RiwayatKonseling', {user: data})}
                 style={menu2Style.konselingIcon}
               >
                 <JadwalKonselingIcon/>

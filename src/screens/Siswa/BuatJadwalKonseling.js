@@ -24,6 +24,7 @@ const BuatJadwalKonseling = ({ route, navigation}) => {
 
     const [dataKonseling, setDataKonseling] = useState({
         guru: '',
+        nama: data.nama,
         permasalahan : '',
         tanggal : new Date(Date.now()),
         jam : '',

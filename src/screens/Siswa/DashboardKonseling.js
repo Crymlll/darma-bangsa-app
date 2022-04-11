@@ -16,7 +16,7 @@ function DashboardKonseling({navigation}) {
 
   let [arrKonseling , setArrKonseling] = useState([]);
   let [email , setEmail] = useState('');
-
+  let[nama,  setNama] = useState('');
 
   let dateFormatDayMonthYear = (date) => {
     let dateFormat = moment(date).format('dddd, D MMMM YYYY');
@@ -32,10 +32,12 @@ function DashboardKonseling({navigation}) {
         .get()
         .then(querySnapshot => {
           if(querySnapshot.docs.length == 0){
-            alert('Anda belum memiliki konseling');
+            // alert('Anda belum memiliki konseling');
+            console.log('Anda belum memiliki konseling');
           }
           else{
             setEmail(user.email);
+            setNama(querySnapshot.docs[0].data().nama);
             querySnapshot.docs.map(doc => {
               setArrKonseling(arrKonseling => [...arrKonseling, doc.data()]);
             });
@@ -53,8 +55,8 @@ function DashboardKonseling({navigation}) {
       return arrKonseling.map((item, index) => {
         return(
           <TouchableOpacity 
-          style={konselingMenuStyle.konselingBox}
-          key={index}
+            style={konselingMenuStyle.konselingBox}
+            key={index}
           >
             <View style={konselingMenuStyle.textKonseling}>
               <Text style={konselingMenuStyle.text}>{item.guru}</Text>
@@ -95,7 +97,7 @@ function DashboardKonseling({navigation}) {
       </View>
       <View style={konselingMenuStyle.bottom}>
         <TouchableOpacity style={konselingMenuStyle.button}
-          onPress={() => navigation.navigate('BuatJadwalKonseling', {email: email})}
+          onPress={() => navigation.navigate('BuatJadwalKonseling', {email: email, nama: nama})}
         >
           <Ionicons name="ios-add-circle" style={konselingMenuStyle.Icon2}/>
           <Text style={konselingMenuStyle.textButton}>Buat Jadwal Konseling</Text>

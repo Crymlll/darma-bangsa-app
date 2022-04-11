@@ -25,6 +25,7 @@ function MenuSiswaScreen({ route , navigation}) {
   const [userData, setUserData] = useState([]);
   let [arrBerita, setArrBerita] = useState([]);
   let [email, setEmail] = useState('');
+  let [nama, setNama] = useState('');
 
   let logout = async () => {
     try {
@@ -46,6 +47,7 @@ function MenuSiswaScreen({ route , navigation}) {
           .get()
           .then(querySnapshot => {
             setEmail(user.email);
+            setNama(querySnapshot.docs[0].data().nama);
             setUserData(querySnapshot.docs[0].data());
           });
         }catch(e){
@@ -162,7 +164,7 @@ function MenuSiswaScreen({ route , navigation}) {
                 <KonselingIcon/>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate('BuatJadwalKonseling',{ email: email })}
+                onPress={() => navigation.navigate('BuatJadwalKonseling',{ email: email, nama: nama })}
                 style={menuStyle.konselingIcon}
               >
                 <JadwalKonselingIcon/>
