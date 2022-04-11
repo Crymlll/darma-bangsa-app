@@ -133,7 +133,7 @@ function MenuWaliKelasScreen({ route , navigation}) {
           <View style={menu2Style.listInformasi}>
             <View style={menu2Style.boxInformasi}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                onPress={() => navigation.navigate('PerizinanSiswa', {userData: data})}
                 style={menu2Style.konselingIcon}
               >
                 <PerizinanSiswaIcon/>

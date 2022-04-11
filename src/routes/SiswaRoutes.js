@@ -7,6 +7,9 @@ import DashboardKonseling from '../screens/Siswa/DashboardKonseling';
 import DashboardBerita from '../screens/Siswa/DashboardBerita';
 import BeritaDetail from '../screens/Siswa/BeritaDetail';
 import BuatJadwalKonseling from '../screens/Siswa/BuatJadwalKonseling';
+import IzinDispensasi from '../screens/Siswa/IzinDispensasi';
+import BuatPerizinan from '../screens/Siswa/BuatPerizinan';
+import DetailPerizinan from '../screens/Siswa/DetailPerizinan';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +22,9 @@ function SiswaRoutes() {
       <Stack.Screen name="DashboardBerita" component={DashboardBerita} />
       <Stack.Screen name="BeritaDetail" component={BeritaDetail} />
       <Stack.Screen name="BuatJadwalKonseling" component={BuatJadwalKonseling} />
+      <Stack.Screen name="IzinDispensasi" component={IzinDispensasi} />
+      <Stack.Screen name="BuatPerizinan" component={BuatPerizinan} />
+      <Stack.Screen name="DetailPerizinan" component={DetailPerizinan} />
     </Stack.Navigator>
   )
 }

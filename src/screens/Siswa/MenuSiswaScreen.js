@@ -4,6 +4,10 @@ import { View, Text, StyleSheet, Modal, Pressable, Image, Button, TouchableOpaci
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
+import moment from 'moment';
+import 'moment/locale/id'
+moment.locale('id');
+
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -26,6 +30,7 @@ function MenuSiswaScreen({ route , navigation}) {
   let [arrBerita, setArrBerita] = useState([]);
   let [email, setEmail] = useState('');
   let [nama, setNama] = useState('');
+  let [dispensasi, setDispensasi] = useState('');
 
   let logout = async () => {
     try {
@@ -46,6 +51,29 @@ function MenuSiswaScreen({ route , navigation}) {
           .where('email', '==', user.email)
           .get()
           .then(querySnapshot => {
+
+            try {
+              firestore()
+              .collection('perizinan')
+              // Filter results
+              .where('email', '==', user.email)
+              .where('status', '==', 'disetujui')
+              .where('tanggal', '==', moment(new Date(Date.now())).format('dddd, D MMMM YYYY'))
+              .get()
+              .then(querySnapshot => {
+                if(querySnapshot.docs.length > 0){
+                  console.log('dispen')
+                  setDispensasi('dispensasi');
+                }
+                else{
+                  console.log('ngga dispen')
+                  setDispensasi('tidak dispensasi');
+                }
+              });
+            }catch(e){
+              console.log(e);
+            }
+
             setEmail(user.email);
             setNama(querySnapshot.docs[0].data().nama);
             setUserData(querySnapshot.docs[0].data());
@@ -98,10 +126,31 @@ function MenuSiswaScreen({ route , navigation}) {
       }
   }
 
+  let tampilkanDispensasi = () => {
+    if(dispensasi === 'dispensasi'){
+      return (
+        <View style={menuStyle.dispensasiTextArea}>
+          <Octicons name="dot-fill" size={20} color="green" />
+          <Text style={menuStyle.textDispensasi}>Sedang Dispensasi</Text>
+        </View>
+      )
+    }
+    else if(dispensasi === 'tidak dispensasi'){
+      return (
+        <View style={menuStyle.dispensasiTextArea}>
+          <Octicons name="dot-fill" size={20} color="red" />
+          <Text style={menuStyle.textDispensasi}>Tidak Dispensasi</Text>
+        </View>
+      )
+    }
+  }
+
+
   useEffect(() => {
     fetchData();
     fetchBerita();
     setArrBerita([]);
+    setDispensasi('');
 }, [])
   
   return (
@@ -139,10 +188,7 @@ function MenuSiswaScreen({ route , navigation}) {
           </View>
           <View style={menuStyle.dispensasiArea}>
             <Text style={menuStyle.dispensasiText}>Dispensasi Hari Ini</Text>
-            <View style={menuStyle.dispensasiTextArea}>
-              <Octicons name="dot-fill" size={20} color="red" />
-              <Text style={menuStyle.textDispensasi}>Tidak Dispensasi</Text>
-            </View>
+            {tampilkanDispensasi()}
           </View>          
         </View>
       </View>
@@ -158,7 +204,7 @@ function MenuSiswaScreen({ route , navigation}) {
           <View style={menuStyle.listInformasi}>
             <View style={menuStyle.boxInformasi}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('DashboardKonseling')}
+                onPress={() => navigation.navigate('DashboardKonseling', {userData})}
                 style={menuStyle.konselingIcon}
               >
                 <KonselingIcon/>
@@ -178,7 +224,7 @@ function MenuSiswaScreen({ route , navigation}) {
             </View>
             <View style={menuStyle.boxInformasi}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('KonselingMenuScreen')}
+                onPress={() => navigation.navigate('IzinDispensasi', {userData})}
                 style={menuStyle.konselingIcon}
               >
                 <PerizinanIcon/>

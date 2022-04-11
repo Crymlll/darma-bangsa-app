@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { View, Text, Button, StyleSheet, Modal, Pressable, Image, TouchableOpacity, TextInput } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -16,22 +16,24 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 import { konselingMenuStyle } from '../../components/Styles/konselingStyle';
-import { useEffect } from 'react/cjs/react.production.min';
 
 const BuatJadwalKonseling = ({ route, navigation}) => {
 
     let data = route.params;
+    let newDate = new Date(Date.now());
 
     const [dataKonseling, setDataKonseling] = useState({
         guru: '',
         nama: data.nama,
         permasalahan : '',
-        tanggal : new Date(Date.now()),
+        tanggal : moment(newDate).format('dddd, D MMMM YYYY'),
         jam : '',
         deskripsi: '',
         status : 'on pending',
         email : data.email,
     })
+
+    const [guruKonseling, setGuruKonseling] = useState([]);
 
     const clickHandler = (textInput) => {
         return (value) => {
@@ -59,10 +61,45 @@ const BuatJadwalKonseling = ({ route, navigation}) => {
         });
     }
 
-    let dateFormatDayMonthYear = (date) => {
+      let dateFormatDayMonthYear = (date) => {
         let dateFormat = moment(date).format('dddd, D MMMM YYYY');
         return dateFormat;
     }
+
+    let fetchGuruKonseling = async () => {
+        try {
+            await firestore()
+            .collection('users')
+            .where('role', '==', 'guru konseling')
+            .get()
+            .then(querySnapshot => {
+                querySnapshot.docs.map(doc => {
+                    doc.data().id = doc.id;
+                    setGuruKonseling(guruKonseling => [...guruKonseling, doc.data()]);
+                });
+            });
+          }catch(e){
+            console.log(e);
+          }
+    }
+
+    let tampilkanGuruKonseling = () => {
+        if(guruKonseling.length > 0){
+            return guruKonseling.map((item, index) => {
+                return (
+                    <Picker.Item label={item.nama} value={item.nama} />
+                )
+            })
+        }
+    }
+
+
+    
+
+    useEffect(() => {
+        fetchGuruKonseling();
+    }, []);
+
 
   return (
     <View style={konselingMenuStyle.container}>
@@ -75,7 +112,7 @@ const BuatJadwalKonseling = ({ route, navigation}) => {
         <Text style={konselingMenuStyle.judul}>Buat Jadwal Konseling</Text>
       </View>
       <View style={konselingMenuStyle.box}>
-        <Text>Halo, $user</Text>
+        <Text>Halo, {data.nama} </Text>
         <Text>Kamu bisa ceritain masalah kamu baik akademik dan non akademik, akan kami bantu untuk mencari solusinya</Text>
         <View style={konselingMenuStyle.youngBlueBox}>
             <Text>Hanya Menerima Konseling pada hari sekolah (senin s/d jumat jam 07:00 - 15:00)</Text>
@@ -90,7 +127,7 @@ const BuatJadwalKonseling = ({ route, navigation}) => {
                     onValueChange={(itemValue) => setDataKonseling({...dataKonseling, guru: itemValue})}
                     >
                     <Picker.Item label="Pilih Guru Konseling" value="0" />
-                    <Picker.Item label="Lilas Ikuta S.Pd.,M.Sc." value="Lilas Ikuta S.Pd.,M.Sc." />
+                    {tampilkanGuruKonseling()}
                 </Picker>
             </View>
         </View>
@@ -165,6 +202,7 @@ const BuatJadwalKonseling = ({ route, navigation}) => {
         <TouchableOpacity
             style={konselingMenuStyle.btn}
             onPress={() => {
+                // console.log(dataKonseling)
                 AddData(dataKonseling)
                 navigation.navigate('DashboardKonseling')
             }}

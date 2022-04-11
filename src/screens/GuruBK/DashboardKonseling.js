@@ -80,7 +80,7 @@ const DashboardKonseling = ({route, navigation}) => {
             <View style={konselingMenuStyle.textKonseling}>
               <Text style={konselingMenuStyle.text}>{item.nama}</Text>
               <Text style={konselingMenuStyle.text}>{item.permasalahan}</Text>
-              <Text style={konselingMenuStyle.text}>{dateFormatDayMonthYear(item.tanggal)}</Text>
+              <Text style={konselingMenuStyle.text}>{item.tanggal}</Text>
               <Text style={konselingMenuStyle.text}>{item.deskripsi}</Text>
               <View style={konselingMenuStyle.btn}>
                 <TouchableOpacity

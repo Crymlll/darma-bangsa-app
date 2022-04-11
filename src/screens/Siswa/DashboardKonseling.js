@@ -12,16 +12,18 @@ import { firebase } from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-function DashboardKonseling({navigation}) {
+function DashboardKonseling({route, navigation}) {
+
+  let data = route.params;
 
   let [arrKonseling , setArrKonseling] = useState([]);
   let [email , setEmail] = useState('');
   let[nama,  setNama] = useState('');
 
-  let dateFormatDayMonthYear = (date) => {
-    let dateFormat = moment(date).format('dddd, D MMMM YYYY');
-    return dateFormat;
-}
+//   let dateFormatDayMonthYear = (date) => {
+//     let dateFormat = moment(date).format('dddd, D MMMM YYYY');
+//     return dateFormat;
+// }
 
   let fetchKonseling = async () => {
     await firebase.auth().onAuthStateChanged((user) => {
@@ -32,11 +34,14 @@ function DashboardKonseling({navigation}) {
         .get()
         .then(querySnapshot => {
           if(querySnapshot.docs.length == 0){
+            setEmail(user.email);
+            setNama(data.userData.nama);
             // alert('Anda belum memiliki konseling');
             console.log('Anda belum memiliki konseling');
           }
           else{
             setEmail(user.email);
+            // console.log(data.userData.nama)
             setNama(querySnapshot.docs[0].data().nama);
             querySnapshot.docs.map(doc => {
               setArrKonseling(arrKonseling => [...arrKonseling, doc.data()]);
@@ -61,7 +66,7 @@ function DashboardKonseling({navigation}) {
             <View style={konselingMenuStyle.textKonseling}>
               <Text style={konselingMenuStyle.text}>{item.guru}</Text>
               <Text style={konselingMenuStyle.text}>{item.permasalahan}</Text>
-              <Text style={konselingMenuStyle.text}>{dateFormatDayMonthYear(item.tanggal)}</Text>
+              <Text style={konselingMenuStyle.text}>{item.tanggal}</Text>
               <Text style={konselingMenuStyle.text}>{item.status}</Text>
             </View>
           </TouchableOpacity>
