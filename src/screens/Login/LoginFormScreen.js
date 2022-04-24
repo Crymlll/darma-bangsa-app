@@ -1,5 +1,12 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
 
 import {sloginStyle} from '../../components/Styles/loginStyle';
 
@@ -19,7 +26,7 @@ function LoginSiswaScreen({navigation}) {
     try {
       await auth().signInWithEmailAndPassword(email, password);
     } catch (e) {
-      console.log(e);
+      alert('Email atau Password salah');
     }
   };
 
@@ -45,73 +52,76 @@ function LoginSiswaScreen({navigation}) {
           }}>
           Sign in
         </Text>
-        <Formik
-          initialValues={{email: '', password: ''}}
-          onSubmit={(values, actions) => {
-            console.log('Trying login...');
-            login(values.email, values.password);
-            actions.setSubmitting(false);
-          }}
-          validationSchema={Yup.object({
-            email: Yup.string()
-              .email('Invalid email!')
-              .required('Email is required!'),
-            password: Yup.string()
-              .required('Password is required!')
-              .min(8, 'Password is too short!'),
-          })}>
-          {formikProps => {
-            const {handleChange, handleBlur, handleSubmit, values, errors} =
-              formikProps;
-            return (
-              <View>
-                <TextInput
-                  style={sloginStyle.input}
-                  placeholder="Email"
-                  value={values.email}
-                  underlineColorAndroid="transparent"
-                  placeholderTextColor={'#c4c4c4'}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  autoCompleteType="email"
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                />
-                {errors.email ? (
-                  <Text style={sloginStyle.valid}>{errors.email}</Text>
-                ) : (
-                  <Text style={sloginStyle.valid}></Text>
-                )}
+        <ScrollView>
+          <Formik
+            initialValues={{email: '', password: ''}}
+            onSubmit={(values, actions) => {
+              console.log('Trying login...');
+              login(values.email, values.password);
 
-                <TextInput
-                  style={sloginStyle.input}
-                  placeholder="Password"
-                  value={values.password}
-                  underlineColorAndroid="transparent"
-                  placeholderTextColor={'#c4c4c4'}
-                  autoCapitalize="none"
-                  secureTextEntry
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
-                />
-                {errors.password ? (
-                  <Text style={sloginStyle.valid}>{errors.password}</Text>
-                ) : (
-                  <Text style={sloginStyle.valid}></Text>
-                )}
+              actions.setSubmitting(false);
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email('Invalid email!')
+                .required('Email is required!'),
+              password: Yup.string()
+                .required('Password is required!')
+                .min(8, 'Password is too short!'),
+            })}>
+            {formikProps => {
+              const {handleChange, handleBlur, handleSubmit, values, errors} =
+                formikProps;
+              return (
+                <View>
+                  <TextInput
+                    style={sloginStyle.input}
+                    placeholder="Email"
+                    value={values.email}
+                    underlineColorAndroid="transparent"
+                    placeholderTextColor={'#c4c4c4'}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCompleteType="email"
+                    onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                  />
+                  {errors.email ? (
+                    <Text style={sloginStyle.valid}>{errors.email}</Text>
+                  ) : (
+                    <Text style={sloginStyle.valid}></Text>
+                  )}
 
-                <TouchableOpacity
-                  mode="contained"
-                  // disabled={!isValid || !dirty}
-                  onPress={() => {
-                    handleSubmit();
-                  }}>
-                  <Text style={sloginStyle.ButtonSubmit}>Submit</Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        </Formik>
+                  <TextInput
+                    style={sloginStyle.input}
+                    placeholder="Password"
+                    value={values.password}
+                    underlineColorAndroid="transparent"
+                    placeholderTextColor={'#c4c4c4'}
+                    autoCapitalize="none"
+                    secureTextEntry
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                  />
+                  {errors.password ? (
+                    <Text style={sloginStyle.valid}>{errors.password}</Text>
+                  ) : (
+                    <Text style={sloginStyle.valid}></Text>
+                  )}
+
+                  <TouchableOpacity
+                    mode="contained"
+                    // disabled={!isValid || !dirty}
+                    onPress={() => {
+                      handleSubmit();
+                    }}>
+                    <Text style={sloginStyle.ButtonSubmit}>Submit</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+          </Formik>
+        </ScrollView>
       </View>
     </View>
   );

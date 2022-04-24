@@ -4,8 +4,14 @@ const loginStyle = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
   },
-
+  boxHeader: {
+    width: '100%',
+    height: '60%',
+  },
   title: {
     textAlign: 'center',
     color: 'black',
@@ -46,6 +52,7 @@ const loginStyle = StyleSheet.create({
     // backgroundColor: '#fff',
     padding: '10%',
     width: '100%',
+    height: '40%',
     // shadowColor: '#000',
     // elevation: 5,
     borderTopLeftRadius: 15,

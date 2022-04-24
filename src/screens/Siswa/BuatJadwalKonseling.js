@@ -123,151 +123,172 @@ const BuatJadwalKonseling = ({route, navigation}) => {
         </TouchableOpacity>
         <Text style={konselingMenuStyle.judul}>Buat Jadwal Konseling</Text>
       </View>
-      <View style={konselingMenuStyle.box2}>
-        <Formik
-          initialValues={{guru: '', permasalahan: '', jam: '', deskripsi: ''}}
-          onSubmit={(values, actions) => {
-            console.log('Trying login...');
-            login(values.email, values.password);
-            actions.setSubmitting(false);
-          }}
-          validationSchema={Yup.object({
-            guru: Yup.string().required('Guru is required!'),
-            permasalahan: Yup.string().required('Permasalahan is required!'),
-            jam: Yup.string().required('Jam is required!'),
-            deskripsi: Yup.string()
-              .min(20, 'minimal 20 kata')
-              .required('Deskripsi is required!'),
-          })}>
-          {formikProps => {
-            const {handleChange, handleBlur, handleSubmit, values, errors} =
-              formikProps;
-            return (
-              <ScrollView>
-                <Text style={konselingMenuStyle.textHeader}>
-                  Halo, {data.nama} !{' '}
-                </Text>
-                <Text style={konselingMenuStyle.textHeaderLight}>
-                  Kamu bisa ceritain masalah kamu baik akademik dan non
-                  akademik, akan kami bantu untuk mencari solusinya
-                </Text>
-                <View style={konselingMenuStyle.youngBlueBox}>
+      <View style={konselingMenuStyle.box3}>
+        <ScrollView>
+          <Formik
+            initialValues={{guru: '', permasalahan: '', jam: '', deskripsi: ''}}
+            onSubmit={(values, actions) => {
+              console.log('Trying login...');
+              login(values.email, values.password);
+              actions.setSubmitting(false);
+            }}
+            validationSchema={Yup.object({
+              guru: Yup.string().required('Guru is required!'),
+              permasalahan: Yup.string().required('Permasalahan is required!'),
+              jam: Yup.string().required('Jam is required!'),
+              deskripsi: Yup.string()
+                .min(20, 'minimal 20 kata')
+                .required('Deskripsi is required!'),
+            })}>
+            {formikProps => {
+              const {handleChange, handleBlur, handleSubmit, values, errors} =
+                formikProps;
+              return (
+                <View>
+                  <Text style={konselingMenuStyle.textHeader}>
+                    Halo, {data.nama} !{' '}
+                  </Text>
                   <Text style={konselingMenuStyle.textHeaderLight}>
-                    Hanya Menerima Konseling pada hari sekolah (senin s/d jumat
-                    jam 07:00 - 15:00)
+                    Kamu bisa ceritain masalah kamu baik akademik dan non
+                    akademik, akan kami bantu untuk mencari solusinya
                   </Text>
-                </View>
-
-                <View style={konselingMenuStyle.package}>
-                  <Text style={konselingMenuStyle.text2}>Guru BK</Text>
-                  <View style={konselingMenuStyle.formDateTime}>
-                    <Picker
-                      selectedValue={dataKonseling.guru}
-                      style={{width: '80%', color: '#000000', marginLeft: '5%'}}
-                      onValueChange={itemValue =>
-                        setDataKonseling({...dataKonseling, guru: itemValue})
-                      }>
-                      <Picker.Item label="Pilih Guru Konseling" value="0" />
-                      {tampilkanGuruKonseling()}
-                    </Picker>
+                  <View style={konselingMenuStyle.youngBlueBox}>
+                    <Text style={konselingMenuStyle.textHeaderLight}>
+                      Hanya Menerima Konseling pada hari sekolah (senin s/d
+                      jumat jam 07:00 - 15:00)
+                    </Text>
                   </View>
-                </View>
 
-                <View style={konselingMenuStyle.package}>
-                  <Text style={konselingMenuStyle.text2}>Permasalahan</Text>
-                  <View style={konselingMenuStyle.formDateTime}>
-                    <Picker
-                      selectedValue={dataKonseling.permasalahan}
-                      style={{width: '80%', color: '#000000', marginLeft: '5%'}}
-                      onValueChange={itemValue =>
-                        setDataKonseling({
-                          ...dataKonseling,
-                          permasalahan: itemValue,
-                        })
-                      }>
-                      <Picker.Item label="Pilih Permasalahan" value="" />
-                      <Picker.Item label="Akademik" value="akademik" />
-                      <Picker.Item label="Non Akademik" value="non akademik" />
-                    </Picker>
-                  </View>
-                </View>
-
-                <View style={konselingMenuStyle.package}>
-                  <Text style={konselingMenuStyle.text2}>
-                    Tanggal Konseling
-                  </Text>
-                  <View style={konselingMenuStyle.formDateTime}>
-                    {!isPickerShow && (
-                      <View style={konselingMenuStyle.btnContainer}></View>
-                    )}
-                    {/* The date picker */}
-                    {isPickerShow && (
-                      <DateTimePicker
-                        value={date}
-                        mode={'date'}
-                        display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-                        is24Hour={true}
-                        onChange={onChange}
-                        style={konselingMenuStyle.datePicker}
-                      />
-                    )}
-                    <View style={konselingMenuStyle.pickedDateContainer}>
-                      <Text
-                        onPress={showPicker}
-                        style={konselingMenuStyle.pickedDate}>
-                        Tanggal Dipilih : {moment(date).format('D MMMM YYYY')}
-                      </Text>
+                  <View style={konselingMenuStyle.package}>
+                    <Text style={konselingMenuStyle.text2}>Guru BK</Text>
+                    <View style={konselingMenuStyle.formDateTime}>
+                      <Picker
+                        selectedValue={dataKonseling.guru}
+                        style={{
+                          width: '80%',
+                          color: '#000000',
+                          marginLeft: '5%',
+                        }}
+                        onValueChange={itemValue =>
+                          setDataKonseling({...dataKonseling, guru: itemValue})
+                        }>
+                        <Picker.Item label="Pilih Guru Konseling" value="0" />
+                        {tampilkanGuruKonseling()}
+                      </Picker>
                     </View>
                   </View>
-                </View>
 
-                <View style={konselingMenuStyle.package}>
-                  <Text style={konselingMenuStyle.text2}>Jam Konseling</Text>
-                  <View style={konselingMenuStyle.formDateTime}>
-                    <Picker
-                      selectedValue={dataKonseling.jam}
-                      style={{width: '80%', color: '#000000', marginLeft: '5%'}}
-                      onValueChange={itemValue =>
-                        setDataKonseling({...dataKonseling, jam: itemValue})
-                      }>
-                      <Picker.Item label="Pilih Jam Konseling" value="" />
-                      <Picker.Item label="9:30 - 10:15" value="9.30" />
-                      <Picker.Item label="10:30 - 11:15" value="10.30" />
-                      <Picker.Item label="11:30 - 12:15" value="11.30" />
-                      <Picker.Item label="13:30 - 14:15" value="13.30" />
-                    </Picker>
+                  <View style={konselingMenuStyle.package}>
+                    <Text style={konselingMenuStyle.text2}>Permasalahan</Text>
+                    <View style={konselingMenuStyle.formDateTime}>
+                      <Picker
+                        selectedValue={dataKonseling.permasalahan}
+                        style={{
+                          width: '80%',
+                          color: '#000000',
+                          marginLeft: '5%',
+                        }}
+                        onValueChange={itemValue =>
+                          setDataKonseling({
+                            ...dataKonseling,
+                            permasalahan: itemValue,
+                          })
+                        }>
+                        <Picker.Item label="Pilih Permasalahan" value="" />
+                        <Picker.Item label="Akademik" value="akademik" />
+                        <Picker.Item
+                          label="Non Akademik"
+                          value="non akademik"
+                        />
+                      </Picker>
+                    </View>
+                  </View>
+
+                  <View style={konselingMenuStyle.package}>
+                    <Text style={konselingMenuStyle.text2}>
+                      Tanggal Konseling
+                    </Text>
+                    <View style={konselingMenuStyle.formDateTime}>
+                      {!isPickerShow && (
+                        <View style={konselingMenuStyle.btnContainer}></View>
+                      )}
+                      {/* The date picker */}
+                      {isPickerShow && (
+                        <DateTimePicker
+                          value={date}
+                          mode={'date'}
+                          display={
+                            Platform.OS === 'ios' ? 'spinner' : 'default'
+                          }
+                          is24Hour={true}
+                          onChange={onChange}
+                          style={konselingMenuStyle.datePicker}
+                        />
+                      )}
+                      <View style={konselingMenuStyle.pickedDateContainer}>
+                        <Text
+                          onPress={showPicker}
+                          style={konselingMenuStyle.pickedDate}>
+                          Tanggal Dipilih : {moment(date).format('D MMMM YYYY')}
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+
+                  <View style={konselingMenuStyle.package}>
+                    <Text style={konselingMenuStyle.text2}>Jam Konseling</Text>
+                    <View style={konselingMenuStyle.formDateTime}>
+                      <Picker
+                        selectedValue={dataKonseling.jam}
+                        style={{
+                          width: '80%',
+                          color: '#000000',
+                          marginLeft: '5%',
+                        }}
+                        onValueChange={itemValue =>
+                          setDataKonseling({...dataKonseling, jam: itemValue})
+                        }>
+                        <Picker.Item label="Pilih Jam Konseling" value="" />
+                        <Picker.Item label="9:30 - 10:15" value="9.30" />
+                        <Picker.Item label="10:30 - 11:15" value="10.30" />
+                        <Picker.Item label="11:30 - 12:15" value="11.30" />
+                        <Picker.Item label="13:30 - 14:15" value="13.30" />
+                      </Picker>
+                    </View>
+                  </View>
+
+                  <View style={konselingMenuStyle.package}>
+                    <Text style={konselingMenuStyle.text2}>
+                      Deskripsi Masalah
+                    </Text>
+                    <View style={konselingMenuStyle.formSingle}>
+                      <TextInput
+                        style={konselingMenuStyle.input}
+                        placeholder="Tuliskan Permasalahan"
+                        underlineColorAndroid="transparent"
+                        placeholderTextColor={'#c4c4c4'}
+                        onChangeText={clickHandler('deskripsi')}
+                      />
+                    </View>
+                  </View>
+                  <View style={konselingMenuStyle.btnContainer}>
+                    <TouchableOpacity
+                      style={konselingMenuStyle.btn}
+                      onPress={() => {
+                        // console.log(dataKonseling)
+                        AddData(dataKonseling);
+                        navigation.navigate('DashboardKonseling');
+                      }}>
+                      <Text style={konselingMenuStyle.btnText}>
+                        Buat Jadwal
+                      </Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
-
-                <View style={konselingMenuStyle.package}>
-                  <Text style={konselingMenuStyle.text2}>
-                    Deskripsi Masalah
-                  </Text>
-                  <View style={konselingMenuStyle.formSingle}>
-                    <TextInput
-                      style={konselingMenuStyle.input}
-                      placeholder="Tuliskan Permasalahan"
-                      underlineColorAndroid="transparent"
-                      placeholderTextColor={'#c4c4c4'}
-                      onChangeText={clickHandler('deskripsi')}
-                    />
-                  </View>
-                </View>
-                <View style={konselingMenuStyle.btnContainer}>
-                  <TouchableOpacity
-                    style={konselingMenuStyle.btn}
-                    onPress={() => {
-                      // console.log(dataKonseling)
-                      AddData(dataKonseling);
-                      navigation.navigate('DashboardKonseling');
-                    }}>
-                    <Text style={konselingMenuStyle.btnText}>Buat Jadwal</Text>
-                  </TouchableOpacity>
-                </View>
-              </ScrollView>
-            );
-          }}
-        </Formik>
+              );
+            }}
+          </Formik>
+        </ScrollView>
       </View>
     </View>
   );

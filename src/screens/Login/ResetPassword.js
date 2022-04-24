@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 
 import {sloginStyle} from '../../components/Styles/loginStyle';
@@ -45,53 +46,55 @@ const ResetPassword = ({navigation}) => {
           }}>
           Reset Password
         </Text>
-        <Formik
-          initialValues={{email: ''}}
-          onSubmit={(values, actions) => {
-            console.log('Trying reset...');
-            reset(values.email);
-            actions.setSubmitting(false);
-          }}
-          validationSchema={Yup.object({
-            email: Yup.string()
-              .email('Invalid email!')
-              .required('Email is required!'),
-          })}>
-          {formikProps => {
-            const {handleChange, handleBlur, handleSubmit, values, errors} =
-              formikProps;
-            return (
-              <View>
-                <TextInput
-                  style={sloginStyle.input}
-                  placeholder="Your Email"
-                  value={values.email}
-                  underlineColorAndroid="transparent"
-                  placeholderTextColor={'#c4c4c4'}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  autoCompleteType="email"
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                />
-                {errors.email ? (
-                  <Text style={sloginStyle.valid}>{errors.email}</Text>
-                ) : (
-                  <Text style={sloginStyle.valid}></Text>
-                )}
+        <ScrollView>
+          <Formik
+            initialValues={{email: ''}}
+            onSubmit={(values, actions) => {
+              console.log('Trying reset...');
+              reset(values.email);
+              actions.setSubmitting(false);
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email('Invalid email!')
+                .required('Email is required!'),
+            })}>
+            {formikProps => {
+              const {handleChange, handleBlur, handleSubmit, values, errors} =
+                formikProps;
+              return (
+                <View>
+                  <TextInput
+                    style={sloginStyle.input}
+                    placeholder="Your Email"
+                    value={values.email}
+                    underlineColorAndroid="transparent"
+                    placeholderTextColor={'#c4c4c4'}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCompleteType="email"
+                    onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                  />
+                  {errors.email ? (
+                    <Text style={sloginStyle.valid}>{errors.email}</Text>
+                  ) : (
+                    <Text style={sloginStyle.valid}></Text>
+                  )}
 
-                <TouchableOpacity
-                  mode="contained"
-                  // disabled={!isValid || !dirty}
-                  onPress={() => {
-                    handleSubmit();
-                  }}>
-                  <Text style={sloginStyle.ButtonSubmit}>Submit</Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        </Formik>
+                  <TouchableOpacity
+                    mode="contained"
+                    // disabled={!isValid || !dirty}
+                    onPress={() => {
+                      handleSubmit();
+                    }}>
+                    <Text style={sloginStyle.ButtonSubmit}>Submit</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+          </Formik>
+        </ScrollView>
       </View>
     </View>
   );
