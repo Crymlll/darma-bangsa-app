@@ -112,7 +112,6 @@ function MenuGuruBKScreen({route, navigation}) {
               </View>
               <View style={menuStyle.profileText}>
                 <Text style={menuStyle.textNama}>{data.nama}</Text>
-                <Text style={menuStyle.text}>Guru Bimbingan Konseling</Text>
                 <Text style={menuStyle.text}>NIP : {data.no_induk}</Text>
               </View>
             </View>
@@ -124,6 +123,9 @@ function MenuGuruBKScreen({route, navigation}) {
                 style={menuStyle.logout}
               />
             </TouchableOpacity>
+          </View>
+          <View style={menuStyle.dispensasiArea}>
+            <Text style={menuStyle.text}>Guru Konseling</Text>
           </View>
         </View>
       </View>

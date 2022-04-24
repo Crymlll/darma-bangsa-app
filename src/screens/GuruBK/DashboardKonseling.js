@@ -8,6 +8,7 @@ import {
   Pressable,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {konselingMenuStyle} from '../../components/Styles/konselingStyle';
 import moment from 'moment';
@@ -85,7 +86,7 @@ const DashboardKonseling = ({route, navigation}) => {
               <Text style={konselingMenuStyle.text}>{item.permasalahan}</Text>
               <Text style={konselingMenuStyle.text}>{item.tanggal}</Text>
               <Text style={konselingMenuStyle.text}>{item.deskripsi}</Text>
-              <View style={konselingMenuStyle.btn}>
+              <View style={konselingMenuStyle.btnDouble}>
                 <TouchableOpacity
                   style={konselingMenuStyle.btnAccept}
                   onPress={() => {
@@ -107,7 +108,12 @@ const DashboardKonseling = ({route, navigation}) => {
       });
     } else {
       return (
-        <View>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '5%',
+          }}>
           <Text style={konselingMenuStyle.text}>
             Anda belum memiliki konseling
           </Text>
@@ -131,7 +137,9 @@ const DashboardKonseling = ({route, navigation}) => {
         </TouchableOpacity>
         <Text style={konselingMenuStyle.judul}>Konseling</Text>
       </View>
-      <View style={konselingMenuStyle.box}>{tampilkanKonseling()}</View>
+      <View style={konselingMenuStyle.box3}>
+        <ScrollView>{tampilkanKonseling()}</ScrollView>
+      </View>
     </View>
   );
 };

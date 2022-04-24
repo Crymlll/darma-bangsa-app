@@ -41,6 +41,67 @@ const DetailPerizinan = ({route, navigation}) => {
     }
   };
 
+  let status = status => {
+    if (status == 'ditolak') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'red',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    } else if (status == 'disetujui') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    } else if (status == 'menunggu') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'black',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    }
+  };
+
+  let EveryFirstEachLetterCapitalized = str => {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  };
+
   let updateData = async (id, status) => {
     try {
       await firestore()
@@ -65,19 +126,33 @@ const DetailPerizinan = ({route, navigation}) => {
           onPress={() => navigation.goBack()}>
           <Ionicons name="ios-chevron-back" style={perizinanMenuStyle.Icon} />
         </TouchableOpacity>
-        <Text style={perizinanMenuStyle.judul}>Izin Detail</Text>
+        <Text style={perizinanMenuStyle.judul}>Detail Perizinan</Text>
       </View>
-      <View style={perizinanMenuStyle.box}>
+      <View style={perizinanMenuStyle.box2}>
         <View>
-          <Text>Detail Perizinan</Text>
-          <Text>{data.perizinan.nama}</Text>
-          <Text>{data.perizinan.kegiatan}</Text>
-          <Text>{data.perizinan.tanggal}</Text>
-          <Text>{data.perizinan.alasan}</Text>
-          <Text>{data.perizinan.status}</Text>
+          <Text style={{marginTop: '5%'}}></Text>
+          <Text style={perizinanMenuStyle.textPadding}>
+            Nama : {data.perizinan.nama}
+          </Text>
+          <Text style={perizinanMenuStyle.textPadding}>
+            Kelas : {data.perizinan.kelas}
+          </Text>
+          <Text style={perizinanMenuStyle.textPadding}>
+            NISN : {data.perizinan.no_induk}
+          </Text>
+          <Text style={perizinanMenuStyle.textPadding}>
+            Kegiatan : {data.perizinan.kegiatan}
+          </Text>
+          <Text style={perizinanMenuStyle.textPadding}>
+            Tanggal : {data.perizinan.tanggal}
+          </Text>
+          <Text style={perizinanMenuStyle.textPadding}>
+            Alasan : {data.perizinan.alasan}
+          </Text>
+          <Text style={perizinanMenuStyle.textPadding}>
+            Status : {status(data.perizinan.status)}
+          </Text>
         </View>
-
-        {button()}
       </View>
     </View>
   );

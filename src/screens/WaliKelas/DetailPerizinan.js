@@ -28,6 +28,34 @@ const DetailPerizinan = ({route, navigation}) => {
     console.log(data.perizinan.nama);
   };
 
+  let button = () => {
+    if (data.perizinan.status == 'menunggu') {
+      return (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            marginTop: '5%',
+          }}>
+          <TouchableOpacity
+            style={perizinanMenuStyle.btnAccept}
+            onPress={() => {
+              updateData(data.perizinan.id, 'disetujui');
+            }}>
+            <Text style={perizinanMenuStyle.textAccept}>Setujui</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={perizinanMenuStyle.btnDecline}
+            onPress={() => {
+              updateData(data.perizinan.id, 'ditolak');
+            }}>
+            <Text style={perizinanMenuStyle.textDecline}>Tolak</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+  };
+
   let status = status => {
     if (status == 'ditolak') {
       return (
@@ -89,6 +117,22 @@ const DetailPerizinan = ({route, navigation}) => {
     });
   };
 
+  let updateData = async (id, status) => {
+    try {
+      await firestore()
+        .collection('perizinan')
+        .doc(id)
+        .update({
+          status: status,
+        })
+        .then(() => {
+          navigation.navigate('PerizinanSiswa', {userData: data.userData});
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={perizinanMenuStyle.container}>
       <View style={perizinanMenuStyle.blueBox}>
@@ -124,6 +168,7 @@ const DetailPerizinan = ({route, navigation}) => {
             Status : {status(data.perizinan.status)}
           </Text>
         </View>
+        {button()}
       </View>
     </View>
   );

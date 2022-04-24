@@ -7,6 +7,7 @@ import {
   Modal,
   Pressable,
   Image,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import moment from 'moment';
@@ -32,6 +33,7 @@ function LihatPerizinan({navigation}) {
       try {
         firestore()
           .collection('perizinan')
+          .where('status', '==', 'disetujui')
           .where('tanggal', '==', moment(newDate).format('dddd, D MMMM YYYY'))
           .get()
           .then(querySnapshot => {
@@ -63,24 +65,96 @@ function LihatPerizinan({navigation}) {
               })
             }>
             <View style={perizinanMenuStyle.textPerizinan}>
-              <Text style={perizinanMenuStyle.text}>{item.nama}</Text>
-              <Text style={perizinanMenuStyle.text}>{item.no_induk}</Text>
-              <Text style={perizinanMenuStyle.text}>{item.tanggal}</Text>
-              <Text style={perizinanMenuStyle.text}>{item.kegiatan}</Text>
-              <Text style={perizinanMenuStyle.text}>{item.status}</Text>
+              <Text style={perizinanMenuStyle.text}>Nama : {item.nama}</Text>
+              <Text style={perizinanMenuStyle.text}>
+                NISN : {item.no_induk}
+              </Text>
+              <Text style={perizinanMenuStyle.text}>
+                Tanggal : {item.tanggal}
+              </Text>
+              <Text style={perizinanMenuStyle.text}>
+                Kegiatan : {item.kegiatan}
+              </Text>
+              {status(item.status)}
             </View>
           </TouchableOpacity>
         );
       });
     } else {
       return (
-        <View>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '5%',
+          }}>
           <Text style={perizinanMenuStyle.text}>
             Tidak ada siswa yang memiliki perizinan hari ini
           </Text>
         </View>
       );
     }
+  };
+
+  let status = status => {
+    if (status == 'ditolak') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'red',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    } else if (status == 'disetujui') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    } else if (status == 'menunggu') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'black',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    }
+  };
+
+  let EveryFirstEachLetterCapitalized = str => {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   };
 
   useEffect(() => {
@@ -98,7 +172,9 @@ function LihatPerizinan({navigation}) {
         </TouchableOpacity>
         <Text style={perizinanMenuStyle.judul}>Lihat Perizinan Siswa</Text>
       </View>
-      <View style={perizinanMenuStyle.box}>{tampilkanPerizinan()}</View>
+      <View style={perizinanMenuStyle.box3}>
+        <ScrollView>{tampilkanPerizinan()}</ScrollView>
+      </View>
     </View>
   );
 }

@@ -34,12 +34,11 @@ const beritaStyle = StyleSheet.create({
   },
   box: {
     width: '90%',
+    height: '90%',
   },
   beritaBox: {
     width: '100%',
-    height: '20%',
-    padding: '5%',
-    paddingBottom: '10%',
+    padding: '10%',
     backgroundColor: 'white',
     borderRadius: 10,
     marginTop: '5%',
@@ -50,7 +49,6 @@ const beritaStyle = StyleSheet.create({
   },
   gambar: {
     width: '100%',
-    height: '100%',
   },
   beritaJudul: {
     fontSize: 20,
@@ -62,7 +60,7 @@ const beritaStyle = StyleSheet.create({
     color: 'black',
   },
   textBerita: {
-    width: '80%',
+    width: '100%',
     height: '100%',
   },
   textLink: {

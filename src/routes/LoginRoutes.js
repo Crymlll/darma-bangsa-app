@@ -3,7 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import LoginScreen from '../screens/Login/LoginScreen';
-import LoginSiswaScreen from '../screens/Login/LoginSiswaScreen';
+import LoginFormScreen from '../screens/Login/LoginFormScreen';
+import ResetPassword from '../screens/Login/ResetPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,8 @@ function LoginRoutes() {
       initialRouteName="LoginScreen"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="LoginSiswaScreen" component={LoginSiswaScreen} />
+      <Stack.Screen name="LoginFormScreen" component={LoginFormScreen} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
     </Stack.Navigator>
   );
 }

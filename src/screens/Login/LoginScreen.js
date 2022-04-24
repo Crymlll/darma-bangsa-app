@@ -8,6 +8,7 @@ import {
   ImageBackground,
 } from 'react-native';
 
+import {globalStyle} from '../../components/Styles/globalStyle';
 import loginStyle from '../../components/Styles/loginStyle';
 
 function LoginScreen({navigation}) {
@@ -27,10 +28,14 @@ function LoginScreen({navigation}) {
         <Text style={loginStyle.login}>Hi, user</Text>
         <TouchableOpacity
           style={loginStyle.buttonOuter}
-          onPress={() => navigation.navigate('LoginSiswaScreen')}>
+          onPress={() => navigation.navigate('LoginFormScreen')}>
           <Text style={loginStyle.ButtonSubmit}>Login</Text>
         </TouchableOpacity>
-        <Text>Forgot Password?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
+          <Text style={{color: 'black', marginTop: '5%'}}>
+            Forgot Password?
+          </Text>
+        </TouchableOpacity>
 
         {/* <TouchableOpacity
           style={loginStyle.buttonOuter}

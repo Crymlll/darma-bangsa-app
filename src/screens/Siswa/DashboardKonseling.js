@@ -69,23 +69,112 @@ function DashboardKonseling({route, navigation}) {
         return (
           <TouchableOpacity style={konselingMenuStyle.konselingBox} key={index}>
             <View style={konselingMenuStyle.textKonseling}>
-              <Text style={konselingMenuStyle.text}>{item.guru}</Text>
-              <Text style={konselingMenuStyle.text}>{item.permasalahan}</Text>
-              <Text style={konselingMenuStyle.text}>{item.tanggal}</Text>
-              <Text style={konselingMenuStyle.text}>{item.status}</Text>
+              <Text style={konselingMenuStyle.text}>Guru : {item.guru}</Text>
+              <Text style={konselingMenuStyle.text}>
+                Permasalahan :{' '}
+                {EveryFirstEachLetterCapitalized(item.permasalahan)}
+              </Text>
+              <Text style={konselingMenuStyle.text}>
+                Tanggal : {item.tanggal}
+              </Text>
+
+              {status(item.status)}
             </View>
           </TouchableOpacity>
         );
       });
     } else {
       return (
-        <View>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '5%',
+          }}>
           <Text style={konselingMenuStyle.text}>
-            Anda belum memiliki konseling
+            Anda belum pernah konseling
           </Text>
         </View>
       );
     }
+  };
+
+  let status = status => {
+    if (status == 'declined') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'red',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    } else if (status == 'done') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    } else if (status == 'on going') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'black',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    } else if (status == 'on pending') {
+      return (
+        <View
+          style={{
+            backgroundColor: 'yellow',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+          }}>
+          <Text
+            style={{
+              color: 'black',
+            }}>
+            {EveryFirstEachLetterCapitalized(status)}
+          </Text>
+        </View>
+      );
+    }
+  };
+
+  let EveryFirstEachLetterCapitalized = str => {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   };
 
   useEffect(() => {

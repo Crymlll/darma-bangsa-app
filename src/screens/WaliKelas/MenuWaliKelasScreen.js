@@ -18,7 +18,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import menu2Style from '../../components/Styles/menu2Style';
+import menuStyle from '../../components/Styles/menuStyle';
 
 import KonselingIcon from '../../components/Konseling/KonselingIcon';
 import JadwalKonselingIcon from '../../components/Konseling/JadwalKonselingIcon';
@@ -67,7 +67,7 @@ function MenuWaliKelasScreen({route, navigation}) {
       return arrBerita.map((item, index) => {
         return (
           <TouchableOpacity
-            style={menu2Style.beritaBox}
+            style={menuStyle.beritaBox}
             onPress={() =>
               navigation.navigate('BeritaDetail', {
                 id: item.id,
@@ -76,9 +76,9 @@ function MenuWaliKelasScreen({route, navigation}) {
               })
             }
             key={index}>
-            <View style={menu2Style.textBerita}>
-              <Text style={menu2Style.beritaJudul}>{item.judul}</Text>
-              <Text style={menu2Style.beritaKonten}>
+            <View style={menuStyle.textBerita}>
+              <Text style={menuStyle.beritaJudul}>{item.judul}</Text>
+              <Text style={menuStyle.beritaKonten}>
                 {item.konten.substring(0, 40)}
               </Text>
             </View>
@@ -94,27 +94,26 @@ function MenuWaliKelasScreen({route, navigation}) {
   }, []);
 
   return (
-    <View style={menu2Style.container}>
-      <View style={menu2Style.blueBox}>
-        <View style={menu2Style.header}>
-          <Text style={menu2Style.sekolahText}>SMA Darma Bangsa</Text>
-          <View style={menu2Style.iconBar}>
+    <View style={menuStyle.container}>
+      <View style={menuStyle.blueBox}>
+        <View style={menuStyle.header}>
+          <Text style={menuStyle.sekolahText}>SMA Darma Bangsa</Text>
+          <View style={menuStyle.iconBar}>
             <Ionicons name="ios-notifications-sharp" size={30} color="white" />
             <Ionicons name="ios-settings-sharp" size={30} color="white" />
           </View>
         </View>
-        <View style={menu2Style.box}>
-          <View style={menu2Style.profile}>
-            <View style={menu2Style.profileDetail}>
-              <View style={menu2Style.profilePhotoFrame}>
+        <View style={menuStyle.box}>
+          <View style={menuStyle.profile}>
+            <View style={menuStyle.profileDetail}>
+              <View style={menuStyle.profilePhotoFrame}>
                 <Image
                   source={require('../../images/profile-example.png')}
-                  style={menu2Style.photoRounded}></Image>
+                  style={menuStyle.photoRounded}></Image>
               </View>
-              <View style={menu2Style.profileText}>
-                <Text style={menu2Style.textNama}>{data.nama}</Text>
-                <Text style={menu2Style.text}>{data.kelas}</Text>
-                <Text style={menu2Style.text}>NIP : {data.no_induk}</Text>
+              <View style={menuStyle.profileText}>
+                <Text style={menuStyle.textNama}>{data.nama}</Text>
+                <Text style={menuStyle.text}>NIP : {data.no_induk}</Text>
               </View>
             </View>
             <TouchableOpacity onPress={() => logout()}>
@@ -122,43 +121,44 @@ function MenuWaliKelasScreen({route, navigation}) {
                 name="logout"
                 size={20}
                 color="black"
-                style={menu2Style.logout}
+                style={menuStyle.logout}
               />
             </TouchableOpacity>
           </View>
-          <View style={menu2Style.dispensasiArea}>
-            <Text style={menu2Style.dispensasiText}>Wali Kelas:</Text>
-            <Text>Wali Kelas {data.kelas}</Text>
+          <View style={menuStyle.dispensasiArea}>
+            <Text style={menuStyle.dispensasiText}>Wali Kelas:</Text>
+            <Text style={menuStyle.text}>{data.kelas}</Text>
           </View>
         </View>
       </View>
-      <View style={menu2Style.bottomBox}>
-        <View style={menu2Style.infoEvent}>
-          <Text style={menu2Style.textJudul}>Info Penting Hari Ini</Text>
-          <View style={menu2Style.listEvent}>{tampilkanBerita()}</View>
+      <View style={menuStyle.bottomBox}>
+        <View style={menuStyle.infoEvent}>
+          <Text style={menuStyle.textJudul}>Info Penting Hari Ini</Text>
+          <View style={menuStyle.listEvent}>{tampilkanBerita()}</View>
         </View>
-        <View style={menu2Style.informasi}>
-          <Text style={menu2Style.textJudul}>Informasi Lengkap</Text>
-          <View style={menu2Style.listInformasi}>
-            <View style={menu2Style.boxInformasi}>
+        <View style={menuStyle.informasi}>
+          <Text style={menuStyle.textJudul}>Informasi Lengkap</Text>
+          <View style={menuStyle.listInformasi}>
+            <View style={menuStyle.boxInformasi}>
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('PerizinanSiswa', {userData: data})
                 }
-                style={menu2Style.konselingIcon}>
+                style={menuStyle.konselingIcon}>
                 <PerizinanSiswaIcon />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => navigation.navigate('DashboardBerita')}
-                style={menu2Style.konselingIcon}>
+                style={menuStyle.konselingIcon}>
                 <BeritaIcon />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => navigation.navigate('LihatPerizinan')}
-                style={menu2Style.konselingIcon}>
+                style={menuStyle.konselingIcon}>
                 <LihatPerizinanIcon />
               </TouchableOpacity>
             </View>
+            <View style={menuStyle.boxInformasi}></View>
           </View>
         </View>
       </View>

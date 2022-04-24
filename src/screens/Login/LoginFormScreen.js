@@ -24,11 +24,17 @@ function LoginSiswaScreen({navigation}) {
   };
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Image
-        source={require('../../images/Background.png')}
-        resizeMode="cover"
-        style={sloginStyle.background}></Image>
+    <View style={sloginStyle.container}>
+      <TouchableOpacity
+        style={sloginStyle.background}
+        onPress={() => navigation.goBack()}>
+        <Image
+          source={require('../../images/Background.png')}
+          resizeMode="cover"
+          style={sloginStyle.background}></Image>
+      </TouchableOpacity>
+
+      <View style={sloginStyle.headerBox}></View>
       <View style={sloginStyle.box}>
         <Text
           style={{

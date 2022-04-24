@@ -56,6 +56,39 @@ const perizinanMenuStyle = StyleSheet.create({
     width: '90%',
     height: '80%',
   },
+  box2: {
+    width: '90%',
+    height: '90%',
+  },
+  box3: {
+    width: '90%',
+    height: '90%',
+  },
+  textHeader: {
+    fontSize: 18,
+    color: 'black',
+    marginTop: '5%',
+    marginBottom: '5%',
+  },
+  textHeader2: {
+    fontSize: 15,
+    color: 'black',
+    fontWeight: '500',
+    marginTop: '5%',
+    marginBottom: '5%',
+  },
+  textPadding: {
+    paddingTop: '5%',
+    color: 'black',
+  },
+  dispensasiBox: {
+    width: '100%',
+    padding: '5%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginTop: '5%',
+    flexDirection: 'row',
+  },
   perizinanBox: {
     width: '100%',
     padding: '5%',
@@ -108,6 +141,9 @@ const perizinanMenuStyle = StyleSheet.create({
     color: '#424242',
     marginLeft: '5%',
   },
+  text: {
+    color: 'black',
+  },
   text2: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -136,11 +172,54 @@ const perizinanMenuStyle = StyleSheet.create({
     color: '#000',
     marginLeft: '5%',
   },
+  btnContainer: {
+    alignItems: 'flex-end',
+  },
   btn: {
+    backgroundColor: '#041562',
+    width: '40%',
     textAlign: 'center',
     alignItems: 'center',
+    padding: '2%',
+    borderRadius: 10,
+    marginTop: '5%',
+  },
+  btnText: {
+    fontSize: 15,
+    color: '#fff',
+  },
+  btnDouble: {
+    marginTop: '5%',
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  btnAccept: {
+    backgroundColor: '#041562',
+    padding: '5%',
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  btnDecline: {
+    backgroundColor: '#white',
+    padding: '5%',
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    borderWidth: 1,
+    borderColor: '#969696',
+    borderRadius: 10,
+  },
+  textAccept: {
+    color: '#fff',
+  },
+  textDecline: {
+    color: '#000',
+  },
+  boxDetail: {
+    width: '90%',
+    height: '100%',
+    marginTop: '5%',
   },
 });
 
@@ -149,7 +228,7 @@ const LihatPerizinanIconStyle = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#4ff09d',
+    backgroundColor: '#EBC8D5',
     borderRadius: 15,
   },
   Icon: {
@@ -164,4 +243,29 @@ const LihatPerizinanIconStyle = StyleSheet.create({
   },
 });
 
-export {perizinanMenuStyle, perizinanIconStyle, LihatPerizinanIconStyle};
+const BuatPerizinanIconStyle = StyleSheet.create({
+  box: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#EBC8D5',
+    borderRadius: 15,
+  },
+  Icon: {
+    fontSize: 48,
+    color: 'black',
+  },
+  text: {
+    fontSize: 18,
+    color: 'black',
+    marginTop: 10,
+    textAlign: 'center',
+  },
+});
+
+export {
+  perizinanMenuStyle,
+  perizinanIconStyle,
+  LihatPerizinanIconStyle,
+  BuatPerizinanIconStyle,
+};

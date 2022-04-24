@@ -51,16 +51,16 @@ function DashboardBerita({navigation}) {
               })
             }
             key={index}>
-            <View style={beritaStyle.logo}>
+            {/* <View style={beritaStyle.logo}>
               <Image
                 source={require('../../images/logo.png')}
                 style={beritaStyle.gambar}
               />
-            </View>
+            </View> */}
             <View style={beritaStyle.textBerita}>
               <Text style={beritaStyle.beritaJudul}>{item.judul}</Text>
               <Text style={beritaStyle.beritaKonten}>
-                {item.konten.substring(0, 100)}
+                {item.konten.substring(0, 250)}
               </Text>
             </View>
           </TouchableOpacity>

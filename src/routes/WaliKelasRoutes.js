@@ -8,6 +8,7 @@ import BeritaDetail from '../components/Berita/BeritaDetail';
 import LihatPerizinan from '../components/Perizinan/LihatPerizinan';
 import DetailPerizinan from '../components/Perizinan/DetailPerizinan';
 
+import DetailPerizinanWK from '../screens/WaliKelas/DetailPerizinan';
 import MenuWaliKelasScreen from '../screens/WaliKelas/MenuWaliKelasScreen';
 import PerizinanSiswa from '../screens/WaliKelas/PerizinanSiswa';
 
@@ -26,6 +27,7 @@ function WaliKelasRoutes() {
       <Stack.Screen name="BeritaDetail" component={BeritaDetail} />
       <Stack.Screen name="PerizinanSiswa" component={PerizinanSiswa} />
       <Stack.Screen name="DetailPerizinan" component={DetailPerizinan} />
+      <Stack.Screen name="DetailPerizinanWK" component={DetailPerizinanWK} />
       <Stack.Screen name="LihatPerizinan" component={LihatPerizinan} />
     </Stack.Navigator>
   );

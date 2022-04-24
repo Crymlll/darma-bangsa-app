@@ -32,6 +32,7 @@ const loginStyle = StyleSheet.create({
   login: {
     marginTop: '20%',
     marginBottom: '5%',
+    color: 'black',
   },
 
   logo: {
@@ -89,19 +90,25 @@ const loginStyle = StyleSheet.create({
 });
 
 const sloginStyle = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  headerBox: {
+    width: '100%',
+    height: '50%',
+  },
   box: {
     alignSelf: 'center',
     backgroundColor: '#fff',
     padding: '10%',
     width: '100%',
-    height: '60%',
-    marginTop: '80%',
+    height: '50%',
+    // marginTop: '80%',
     shadowColor: '#000',
     elevation: 5,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-
   background: {
     height: '100%',
     top: 0,
@@ -110,7 +117,6 @@ const sloginStyle = StyleSheet.create({
     position: 'absolute',
     width: '100%',
   },
-
   input: {
     width: '100%',
     borderColor: '#c4c4c4',
@@ -118,7 +124,7 @@ const sloginStyle = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     backgroundColor: '#fff',
-    lineHeight: 1,
+    color: 'black',
   },
   ButtonSubmit: {
     fontWeight: '400',
