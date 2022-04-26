@@ -219,13 +219,10 @@ function MenuSiswaScreen({route, navigation}) {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('BuatJadwalKonseling', {
-                    email: email,
-                    nama: nama,
-                  })
+                  navigation.navigate('IzinDispensasi', {userData})
                 }
                 style={menuStyle.konselingIcon}>
-                <JadwalKonselingIcon />
+                <PerizinanIcon />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => navigation.navigate('DashboardBerita')}
@@ -233,22 +230,7 @@ function MenuSiswaScreen({route, navigation}) {
                 <BeritaIcon />
               </TouchableOpacity>
             </View>
-            <View style={menuStyle.boxInformasi}>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('IzinDispensasi', {userData})
-                }
-                style={menuStyle.konselingIcon}>
-                <PerizinanIcon />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('BuatPerizinan', {userData})}
-                style={menuStyle.konselingIcon}>
-                <BuatPerizinanIcon />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={menuStyle.konselingIcon}></TouchableOpacity>
-            </View>
+            <View style={menuStyle.boxInformasi}></View>
           </View>
         </View>
       </View>

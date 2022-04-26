@@ -67,9 +67,13 @@ const IzinDispensasi = ({route, navigation}) => {
               navigation.navigate('DetailPerizinan', {perizinan: item})
             }>
             <View style={perizinanMenuStyle.textDispensasi}>
-              <Text style={perizinanMenuStyle.text}>{item.nama}</Text>
-              <Text style={perizinanMenuStyle.text}>{item.kegiatan}</Text>
-              <Text style={perizinanMenuStyle.text}>{item.tanggal}</Text>
+              <Text style={perizinanMenuStyle.text}>Nama : {item.nama}</Text>
+              <Text style={perizinanMenuStyle.text}>
+                Kegiatan : {item.kegiatan}
+              </Text>
+              <Text style={perizinanMenuStyle.text}>
+                Tanggal : {item.tanggal}
+              </Text>
               {status(item.status)}
             </View>
           </TouchableOpacity>
