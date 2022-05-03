@@ -2,14 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
-  Button,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
   TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
@@ -19,12 +13,7 @@ import 'moment/locale/id';
 moment.locale('id');
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {firebase} from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 import {Formik} from 'formik';

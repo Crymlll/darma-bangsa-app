@@ -1,15 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {perizinanMenuStyle} from '../../components/Styles/perizinanStyle';
 
 import moment from 'moment';

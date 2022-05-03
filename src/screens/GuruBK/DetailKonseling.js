@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 import {konselingMenuStyle} from '../../components/Styles/konselingStyle';
 
@@ -18,8 +9,6 @@ moment.locale('id');
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {firebase} from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const DetailKonseling = ({route, navigation}) => {

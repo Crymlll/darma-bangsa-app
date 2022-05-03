@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -10,9 +10,7 @@ import {
 
 import {sloginStyle} from '../../components/Styles/loginStyle';
 
-import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import {AuthContext} from '../../db/AuthProvider';
 
 import {Formik} from 'formik';
 import * as Yup from 'yup';

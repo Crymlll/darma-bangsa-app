@@ -1,22 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {konselingMenuStyle} from '../../components/Styles/konselingStyle';
 import moment from 'moment';
 import 'moment/locale/id';
 moment.locale('id');
 
-import {firebase} from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';

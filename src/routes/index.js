@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, {useState, useEffect} from 'react';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import LoginRoutes from './LoginRoutes';
-import SiswaRoutes from './SiswaRoutes';
-import WaliKelasRoutes from './WaliKelasRoutes';
-import GuruRoutes from './GuruRoutes';
-import GuruBKRoutes from './GuruBKRoutes';
 import UsersRoutes from './UsersRoutes';
 
 import auth from '@react-native-firebase/auth';
@@ -35,13 +31,11 @@ const Index = () => {
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Login" component={LoginRoutes}  />
+          <Stack.Screen name="Login" component={LoginRoutes} />
         </Stack.Navigator>
       </NavigationContainer>
-      
     );
   }
-
 
   return (
     <NavigationContainer>
@@ -49,7 +43,7 @@ const Index = () => {
         <Stack.Screen name="Users" component={UsersRoutes} />
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

@@ -1,12 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
-  Button,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
   TouchableOpacity,
   TextInput,
   ScrollView,
@@ -21,8 +16,6 @@ moment.locale('id');
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {firebase} from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const BuatPerizinan = ({route, navigation}) => {

@@ -1,15 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  ScrollView,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import moment from 'moment';
 import 'moment/locale/id';
 moment.locale('id');
@@ -19,7 +9,6 @@ import {konselingMenuStyle} from '../../components/Styles/konselingStyle';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {firebase} from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 function DashboardKonseling({route, navigation}) {

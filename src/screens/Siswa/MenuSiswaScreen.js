@@ -1,14 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 // import { AuthContext } from '../../db/AuthProvider';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -20,17 +11,14 @@ moment.locale('id');
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import menuStyle from '../../components/Styles/menuStyle';
 
 import KonselingIcon from '../../components/Konseling/KonselingIcon';
-import JadwalKonselingIcon from '../../components/Konseling/JadwalKonselingIcon';
 import BeritaIcon from '../../components/Berita/BeritaIcon';
 import PerizinanIcon from '../../components/Perizinan/PerizinanIcon';
 
 import {firebase} from '@react-native-firebase/app';
-import BuatPerizinanIcon from '../../components/Perizinan/BuatPerizinanIcon';
 
 function MenuSiswaScreen({route, navigation}) {
   const [userData, setUserData] = useState([]);

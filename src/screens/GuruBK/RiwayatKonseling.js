@@ -1,15 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Modal,
-  Pressable,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {konselingMenuStyle} from '../../components/Styles/konselingStyle';
 import moment from 'moment';
 import 'moment/locale/id';
